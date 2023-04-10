@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
+  <title>E-commerce product page</title>
+</head>
+
+<body>
+  <header class="">
+    <nav class="fixed inset-x-0 top-0 z-30 mx-auto bg-white lg:max-w-screen-lg lg:px-4">
+      <div class="flex items-center gap-x-4 border-blue-200 p-6 sm:gap-x-10 sm:border-b-2 sm:py-12">
+        <button id="mobile-menu" class="sm:hidden">
+          <img src="./images/icon-menu.svg" alt="menu-icon" />
+        </button>
+        <div class="grow sm:grow-0">
+          <a href="#" class="inline-block">
+            <img src="./images/logo.svg" alt="logo" class="sm:w-40" />
+          </a>
+        </div>
+        <ul class="hidden grow gap-x-6 text-blue-400 sm:flex">
+          <li class="cursor-pointer transition-colors hover:text-blue-700">
+            Collections
+          </li>
+          <li class="cursor-pointer transition-colors hover:text-blue-700">
+            Men
+          </li>
+          <li class="cursor-pointer transition-colors hover:text-blue-700">
+            Women
+          </li>
+          <li class="cursor-pointer transition-colors hover:text-blue-700">
+            About
+          </li>
+          <li class="cursor-pointer transition-colors hover:text-blue-700">
+            Contact
+          </li>
+        </ul>
+        <button id="btn-cart" class="group relative">
+          <span id="cart-indicator"
+            class="absolute -top-2 z-20 hidden h-4 w-6 rounded-xl bg-orange-400 text-xs font-bold text-white"></span>
+          <img src="./images/icon-cart.svg" alt="cart-icon" class="brightness-50 transition group-hover:brightness-0" />
+        </button>
+        <button class="group">
+          <img src="./images/image-avatar.png" alt="avatar-img"
+            class="w-6 rounded-full opacity-95 ring-orange-400 transition group-hover:opacity-100 group-hover:ring-2 sm:w-14" />
+        </button>
+      </div>
+      <aside id="sidebar" class="fixed inset-0 -z-20 -translate-x-full transition duration-300">
+        <div id="backdrop" class="absolute inset-0 hidden bg-black-400 opacity-75"></div>
+        <div id="sidebar-menu"
+          class="absolute inset-0 w-2/3 -translate-x-full bg-white p-4 transition delay-500 duration-300">
+          <button id="close-menu-icon">
+            <img src="./images/icon-close.svg" alt="close-icon" />
+          </button>
+          <ul class="mt-8 space-y-4 font-bold">
+            <li>Collections</li>
+            <li>Men</li>
+            <li>Women</li>
+            <li>About</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </aside>
+      <div id="cart-menu"
+        class="absolute left-2 right-2 top-20 z-20 hidden rounded-lg bg-white shadow-lg sm:left-auto sm:right-4 sm:top-28">
+      </div>
+    </nav>
+  </header>
+  <main class="mt-20 sm:mx-auto sm:mt-64 sm:flex sm:gap-x-14 sm:px-2 md:gap-x-28 md:px-20 lg:max-w-screen-lg">
+    <div id="lightbox" class="fixed inset-0 z-50 hidden">
+      <div class="absolute inset-0 bg-black-400 opacity-75"></div>
+      <div class="absolute inset-0 m-auto h-3/4 sm:w-1/2 lg:w-1/3">
+        <button id="close-lightbox-btn" class="absolute -top-10 right-0">
+          <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg">
+            <g transform="scale(1.3 1.3)">
+              <path
+                d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                fill="hsl(26 100% 55%)" fill-rule="evenodd" />
+            </g>
+          </svg>
+        </button>
+        <div class="relative">
+          <button id="btnNext-lightBox"
+            class="absolute inset-y-0 -right-5 my-auto flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white transition-opacity hover:opacity-95">
+            <img src="./images/icon-next.svg" alt="next-icon" class="ml-1 w-3" />
+          </button>
+          <button id="btnPrev-lightBox"
+            class="absolute inset-y-0 -left-5 my-auto flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white transition-opacity hover:opacity-95">
+            <img src="./images/icon-previous.svg" alt="" class="mr-1 w-3" />
+          </button>
+          <img src="./images/image-product-1.jpg" alt="product-gallery-img" id="mainProduct" class="sm:rounded-2xl" />
+        </div>
+        <div id="thumbnails-container" class="mt-10 hidden gap-x-6 sm:flex">
+          <div id="thumbnail"
+            class="cursor-pointer overflow-hidden rounded-2xl ring-2 ring-orange-400 transition hover:opacity-60"
+            data-product="1">
+            <img src="./images/image-product-1-thumbnail.jpg" alt="thumbnail-1" class="max-w-full" />
+          </div>
+          <div id="thumbnail"
+            class="cursor-pointer overflow-hidden rounded-2xl ring-orange-400 transition hover:opacity-60"
+            data-product="2">
+            <img src="./images/image-product-2-thumbnail.jpg" alt="thumbnail-2" class="max-w-full" />
+          </div>
+          <div id="thumbnail"
+            class="cursor-pointer overflow-hidden rounded-2xl ring-orange-400 transition hover:opacity-60"
+            data-product="3">
+            <img src="./images/image-product-3-thumbnail.jpg" alt="thumbnail-3" class="max-w-full" />
+          </div>
+          <div id="thumbnail"
+            class="cursor-pointer overflow-hidden rounded-2xl ring-orange-400 transition hover:opacity-60"
+            data-product="4">
+            <img src="./images/image-product-4-thumbnail.jpg" alt="thumbnail-3" class="max-w-full" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <section id="product-gallery">
+      <div class="relative">
+        <button
+          class="absolute inset-y-0 right-4 my-auto flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white transition-opacity hover:opacity-95 sm:hidden">
+          <img src="./images/icon-next.svg" alt="next-icon" class="ml-1 w-3" />
+        </button>
+        <button
+          class="absolute inset-y-0 left-4 my-auto flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white transition-opacity hover:opacity-95 sm:hidden">
+          <img src="./images/icon-previous.svg" alt="" class="mr-1 w-3" />
+        </button>
+        <img src="./images/image-product-1.jpg" alt="product-gallery-img" id="mainProduct-img" class="sm:rounded-2xl" />
+        <div id="thumbnails-container" class="mt-10 hidden gap-x-6 sm:flex">
+          <div id="thumbnail"
+            class="cursor-pointer overflow-hidden rounded-2xl ring-orange-400 transition hover:opacity-60"
+            data-product="1">
+            <img src="./images/image-product-1-thumbnail.jpg" alt="thumbnail-1" class="max-w-full" />
+          </div>
+          <div id="thumbnail"
+            class="cursor-pointer overflow-hidden rounded-2xl ring-orange-400 transition hover:opacity-60"
+            data-product="2">
+            <img src="./images/image-product-2-thumbnail.jpg" alt="thumbnail-2" class="max-w-full" />
+          </div>
+          <div id="thumbnail"
+            class="cursor-pointer overflow-hidden rounded-2xl ring-orange-400 transition hover:opacity-60"
+            data-product="3">
+            <img src="./images/image-product-3-thumbnail.jpg" alt="thumbnail-3" class="max-w-full" />
+          </div>
+          <div id="thumbnail"
+            class="cursor-pointer overflow-hidden rounded-2xl ring-orange-400 transition hover:opacity-60"
+            data-product="4">
+            <img src="./images/image-product-4-thumbnail.jpg" alt="thumbnail-3" class="max-w-full" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="product-details">
+      <div class="space-y-8 p-6">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-orange-400 sm:text-lg">
+          Sneaker Company
+        </h2>
+        <h3 class="text-4xl font-bold sm:text-5xl">
+          Fall Limited Edition Sneakers
+        </h3>
+        <p class="text-blue-400">
+          These low-profile sneakers are your perfect casual wear companion.
+          Featuring a durable rubber outer sole, they’ll withstand everything
+          the weather can offer.
+        </p>
+        <div class="flex flex-wrap items-center gap-x-4 sm:gap-y-3">
+          <span class="text-3xl font-bold">$125.00</span>
+          <span class="grow-0 rounded-lg bg-orange-200 px-2 py-1 font-bold text-orange-400">50%</span>
+          <span class="grow text-end font-bold text-blue-200 line-through sm:w-full sm:text-start">$250.00</span>
+        </div>
+        <div class="flex flex-col gap-y-6 sm:flex-row sm:gap-x-6 md:pr-20">
+          <div id="btn-quantity"
+            class="flex w-full items-center justify-between rounded-lg bg-blue-50 p-4 sm:basis-2/3">
+            <button id="btn-minus" class="disabled:opacity-50">
+              <img src="./images/icon-minus.svg" alt="minus-icon" class="transition active:opacity-80" />
+            </button>
+            <span id="item-count" class="font-bold">0</span>
+            <button id="btn-add" class="disabled:opacity-50">
+              <img src="./images/icon-plus.svg" alt="plus-icon" class="transition hover:opacity-80 active:opacity-80" />
+            </button>
+          </div>
+          <button id="add-to-cart"
+            class="flex w-full items-center justify-center gap-x-3 rounded-lg bg-orange-400 py-4 font-bold text-white transition hover:opacity-80 focus:opacity-50">
+            <img src="./images/icon-cart.svg" alt="cart-icon" class="w-4 brightness-0 grayscale invert" />
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
